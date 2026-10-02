@@ -98,6 +98,7 @@ export const authController = {
             verified_email: user.verified_email,
           },
           ...tokens,
+          ...((process.env.NODE_ENV || 'development') === 'development' ? { verificationCode } : {}),
         },
       });
     } catch (error) {
@@ -209,15 +210,18 @@ export const authController = {
         await emailService.sendVerificationEmail(user, verificationCode);
       } catch (emailError) {
         console.error('Failed to send verification email:', emailError);
-        return res.status(500).json({
-          success: false,
-          message: 'Erro ao enviar e-mail de verificação',
-        });
+        if ((process.env.NODE_ENV || 'development') !== 'development') {
+          return res.status(500).json({
+            success: false,
+            message: 'Erro ao enviar e-mail de verificação',
+          });
+        }
       }
 
       res.json({
         success: true,
         message: 'Código de verificação reenviado',
+        data: (process.env.NODE_ENV || 'development') === 'development' ? { verificationCode } : undefined,
       });
     } catch (error) {
       next(error);

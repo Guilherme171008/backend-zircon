@@ -16,6 +16,15 @@ const getTransporter = () => {
 };
 
 const sendEmail = async (to, subject, html) => {
+  const placeholderSmtp = !process.env.SMTP_HOST
+    || emailConfig.host === 'smtp.example.com'
+    || emailConfig.auth.user === 'your-email@example.com';
+
+  if (placeholderSmtp) {
+    console.info(`[DEV EMAIL] SMTP não configurado; mensagem para ${to}: ${subject}`);
+    return { accepted: [to], messageId: 'development-only' };
+  }
+
   const transport = getTransporter();
   const mailOptions = {
     from: emailConfig.from,

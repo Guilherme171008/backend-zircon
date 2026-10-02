@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zircon — Painel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101b2d;--navy-2:#1d3151;--paper:#f5f3ee;--white:#fff;--line:#ddd9cf;--amber:#d98e1f;--green:#2e7d4f;--blue:#3a57a6;--muted:#707887;--red:#b23a2e}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--navy);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}h1,h2,h3,.brand{font-family:Manrope,sans-serif;letter-spacing:-.02em}button,a{font:inherit}a{color:inherit}
+.top{background:var(--navy);color:#fff}.bar{max-width:1160px;height:68px;margin:auto;padding:0 28px;display:flex;align-items:center;gap:28px}.brand{font-weight:800;font-size:21px;text-decoration:none}.brand span{color:var(--amber)}.nav{display:flex;gap:5px;flex:1}.nav a{padding:9px 12px;text-decoration:none;color:#aeb8c8;border-radius:4px;font:700 13px Manrope}.nav a.active,.nav a:hover{background:var(--navy-2);color:#fff}.user{display:flex;align-items:center;gap:10px;font:700 12px Manrope;color:#d6dbe5}.avatar{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:var(--amber);color:var(--navy);font:800 12px Manrope}
+.page{max-width:1160px;margin:auto;padding:42px 28px 76px}.eyebrow{margin:0 0 7px;color:var(--amber);font:800 11px Manrope;letter-spacing:.12em;text-transform:uppercase}.intro{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}.intro h1{margin:0;font-size:32px}.intro p{margin:7px 0 0;color:var(--muted)}.primary{border:1px solid var(--amber);border-radius:4px;background:var(--amber);padding:11px 16px;color:#1a1200;font:800 13px Manrope;cursor:pointer}.primary:hover{background:#b5760f}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{background:var(--white);border:1px solid var(--line);padding:19px 18px;border-radius:4px}.stat small{color:var(--muted);font:700 11px Manrope;text-transform:uppercase;letter-spacing:.06em}.stat strong{display:block;margin:8px 0 2px;font:800 29px Manrope}.stat .delta{font-size:12px;color:var(--green)}.stat .warn{color:var(--amber)}
+.content{display:grid;grid-template-columns:1.35fr .85fr;gap:18px;margin-top:18px}.panel{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:22px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.panel h2{font-size:18px;margin:0}.link{color:var(--blue);font:700 12px Manrope;text-decoration:none}.job{display:grid;grid-template-columns:1fr auto;gap:8px;padding:17px 0;border-top:1px solid var(--line)}.job:first-of-type{border-top:0}.job h3{font-size:15px;margin:0 0 3px}.job p{margin:0;color:var(--muted);font-size:13px}.badge{display:inline-block;margin-top:8px;padding:3px 8px;border-radius:20px;background:#e8f3ec;color:var(--green);font:800 10px Manrope;text-transform:uppercase;letter-spacing:.04em}.badge.blue{background:#e7ecf7;color:var(--blue)}.money{font:800 13px Manrope;text-align:right}.date{display:block;margin-top:4px;color:var(--muted);font:500 11px "DM Mono",monospace}.activity{display:flex;gap:12px;padding:15px 0;border-top:1px solid var(--line)}.activity:first-of-type{border-top:0}.dot{width:9px;height:9px;flex:none;margin-top:6px;border-radius:50%;background:var(--amber)}.activity strong{font-size:13px}.activity p{margin:3px 0 0;color:var(--muted);font-size:12px}.tip{margin-top:18px;padding:17px;background:var(--navy);color:#fff;border-radius:4px}.tip strong{font:800 13px Manrope}.tip p{margin:6px 0 0;color:#c9d0de;font-size:12px}.tip button{margin-top:12px;border:0;background:transparent;color:var(--amber);padding:0;font:800 12px Manrope;cursor:pointer}
+footer{max-width:1160px;margin:auto;padding:0 28px 24px;color:var(--muted);font-size:12px}code{font-family:"DM Mono",monospace}
+@media(max-width:760px){.bar{height:auto;flex-wrap:wrap;padding:12px 18px;gap:12px}.nav{order:3;width:100%;overflow:auto}.user{margin-left:auto}.page{padding:30px 18px 60px}.intro{align-items:start;flex-direction:column}.intro h1{font-size:28px}.grid{grid-template-columns:repeat(2,1fr)}.content{grid-template-columns:1fr}.panel{padding:18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="bar">
+  <a class="brand" href="index (1).html#/vagas">zir<span>con</span></a>
+  <nav class="nav"><a class="active" href="painel.html">Painel</a><a href="index (1).html#/vagas">Explorar vagas</a><a href="index (1).html#/minhas-candidaturas">Candidaturas</a></nav>
+  <div class="user"><span>Marina Costa</span><span class="avatar">MC</span></div>
+</div></header>
+<main class="page">
+  <section class="intro"><div><p class="eyebrow">Quarta-feira, 30 de setembro</p><h1>Bom dia, Marina.</h1><p>Seu próximo movimento profissional começa aqui.</p></div><button class="primary" id="explore">Explorar novas vagas</button></section>
+  <section class="grid" aria-label="Resumo"><article class="stat"><small>Candidaturas ativas</small><strong>08</strong><span class="delta">+2 esta semana</span></article><article class="stat"><small>Em análise</small><strong>03</strong><span class="warn">1 aguardando retorno</span></article><article class="stat"><small>Entrevistas</small><strong>02</strong><span class="delta">Próxima em 2 dias</span></article><article class="stat"><small>Perfil completo</small><strong>86%</strong><span class="delta">Quase lá</span></article></section>
+  <section class="content">
+    <article class="panel"><div class="panel-head"><h2>Vagas recomendadas</h2><a class="link" href="index (1).html#/vagas">Ver todas →</a></div>
+      <div class="job"><div><h3>Product Designer Pleno</h3><p>Clarity Labs · Remoto</p><span class="badge">Alta compatibilidade</span></div><div class="money">R$ 8.500<span class="date">há 2h</span></div></div>
+      <div class="job"><div><h3>UX Researcher</h3><p>Norte Digital · Híbrido</p><span class="badge blue">Nova oportunidade</span></div><div class="money">R$ 7.200<span class="date">há 5h</span></div></div>
+      <div class="job"><div><h3>Service Designer</h3><p>Orbe Tecnologia · Remoto</p><span class="badge">Alta compatibilidade</span></div><div class="money">R$ 9.100<span class="date">ontem</span></div></div>
+    </article>
+    <aside class="panel"><div class="panel-head"><h2>Atividade recente</h2><a class="link" href="index (1).html#/minhas-candidaturas">Histórico →</a></div>
+      <div class="activity"><i class="dot"></i><div><strong>Portfólio visualizado</strong><p>Clarity Labs · hoje, 09:42</p></div></div>
+      <div class="activity"><i class="dot"></i><div><strong>Candidatura enviada</strong><p>UX Researcher · ontem, 16:18</p></div></div>
+      <div class="activity"><i class="dot"></i><div><strong>Perfil atualizado</strong><p>Você adicionou uma nova habilidade</p></div></div>
+      <div class="tip"><strong>Deixe seu perfil mais forte</strong><p>Adicione um projeto recente para aumentar sua visibilidade.</p><button id="profile">Completar perfil →</button></div>
+    </aside>
+  </section>
+</main>
+<footer>Zircon · encontre trabalhos que combinam com o seu jeito de fazer.</footer>
+<script>
+document.getElementById('explore').onclick=()=>location.href='index (1).html#/vagas';
+document.getElementById('profile').onclick=()=>location.href='index (1).html#/perfil';
+</script>
+</body>
+</html>
