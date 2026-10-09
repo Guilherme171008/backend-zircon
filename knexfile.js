@@ -1,69 +1,49 @@
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const projectRoot = path.dirname(__filename);
+const dataDir = path.join(projectRoot, 'data');
 
-const dbPath = process.env.DB_FILENAME || './data/zircon.db';
+fs.mkdirSync(dataDir, { recursive: true });
+
+const baseConfig = {
+  client: 'sqlite3',
+  useNullAsDefault: true,
+  migrations: {
+    directory: path.join(projectRoot, 'src', 'database', 'migrations'),
+    tableName: 'knex_migrations',
+  },
+  seeds: {
+    directory: path.join(projectRoot, 'src', 'database', 'seeds'),
+  },
+  pool: {
+    afterCreate: (conn, done) => {
+      conn.run('PRAGMA foreign_keys = ON', done);
+    },
+  },
+};
 
 export default {
   development: {
-    client: 'sqlite3',
+    ...baseConfig,
     connection: {
-      filename: dbPath,
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: path.join(__dirname, 'src/database/migrations'),
-      tableName: 'knex_migrations',
-    },
-    seeds: {
-      directory: path.join(__dirname, 'src/database/seeds'),
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
+      filename: process.env.DB_FILENAME || path.join(dataDir, 'zircon.db'),
     },
   },
 
   production: {
-    client: 'sqlite3',
+    ...baseConfig,
     connection: {
-      filename: dbPath,
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: path.join(__dirname, 'src/database/migrations'),
-      tableName: 'knex_migrations',
-    },
-    seeds: {
-      directory: path.join(__dirname, 'src/database/seeds'),
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
+      filename: process.env.DB_FILENAME || path.join(dataDir, 'zircon.db'),
     },
   },
 
   test: {
-    client: 'sqlite3',
+    ...baseConfig,
     connection: {
-      filename: path.join(__dirname, 'data', 'zircon.test.db'),
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: path.join(__dirname, 'src/database/migrations'),
-      tableName: 'knex_migrations',
-    },
-    seeds: {
-      directory: path.join(__dirname, 'src/database/seeds'),
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
+      filename: path.join(dataDir, 'zircon.test.db'),
     },
   },
 };
