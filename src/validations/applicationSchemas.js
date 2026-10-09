@@ -4,6 +4,7 @@ export const applicationSchemas = {
   create: z.object({
     body: z.object({
       vacancy_id: z.coerce.number().int().positive('ID da vaga é obrigatório'),
+      work_modality: z.enum(['HOME_OFFICE', 'HIBRIDO', 'PRESENCIAL']).default('HOME_OFFICE'),
     }).strict(),
   }),
 

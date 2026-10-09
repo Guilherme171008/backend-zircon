@@ -10,8 +10,12 @@ async function startServer() {
     await db.raw('SELECT 1');
     console.log('✅ Database connected successfully');
 
-    // Run migrations in development (optional - can be run manually)
-    if (process.env.NODE_ENV === 'development' && process.env.AUTO_MIGRATE === 'true') {
+    // Run migrations in development by default to keep schema in sync
+    const shouldAutoMigrate = (process.env.NODE_ENV || 'development') === 'development' && (
+      process.env.AUTO_MIGRATE === 'true' || process.env.AUTO_MIGRATE === undefined
+    );
+
+    if (shouldAutoMigrate) {
       console.log('🔄 Running migrations...');
       await db.migrate.latest();
       console.log('✅ Migrations completed');

@@ -172,6 +172,17 @@ describe('Zircon API Integration Tests', () => {
         limit: 10,
       });
     });
+
+    test('OPTIONS /api/auth/register should allow local file origins', async () => {
+      const response = await request(app)
+        .options('/api/auth/register')
+        .set('Origin', 'null')
+        .set('Access-Control-Request-Method', 'POST')
+        .set('Access-Control-Request-Headers', 'content-type');
+
+      expect(response.status).toBe(204);
+      expect(response.headers['access-control-allow-origin']).toBe('null');
+    });
   });
 
   describe('Auth Flow', () => {
@@ -443,11 +454,12 @@ describe('Zircon API Integration Tests', () => {
       const response = await request(app)
         .post('/api/applications')
         .set('Authorization', `Bearer ${profissionalToken}`)
-        .send({ vacancy_id: opportunityId });
+        .send({ vacancy_id: opportunityId, work_modality: 'HIBRIDO' });
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);
       expect(response.body.data.application.vacancy_id).toBe(opportunityId);
+      expect(response.body.data.application.work_modality).toBe('HIBRIDO');
       applicationId = response.body.data.application.id;
     });
 

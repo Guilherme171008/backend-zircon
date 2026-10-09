@@ -4,6 +4,7 @@ const APPLICATION_SELECT_FIELDS = [
   'id',
   'user_id',
   'vacancy_id',
+  'work_modality',
   'status',
   'expiration_date',
   'created_at',

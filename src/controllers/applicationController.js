@@ -7,7 +7,10 @@ import { buildPaginatedResponse } from '../utils/apiResponse.js';
 export const applicationController = {
   async create(req, res, next) {
     try {
-      const { vacancy_id } = req.body;
+      const { vacancy_id, work_modality } = req.body;
+      const normalizedWorkModality = ['HOME_OFFICE', 'HIBRIDO', 'PRESENCIAL'].includes(work_modality)
+        ? work_modality
+        : 'HOME_OFFICE';
 
       // Check if opportunity exists and is active
       const opportunity = await opportunityModel.findById(vacancy_id);
@@ -49,6 +52,7 @@ export const applicationController = {
       const application = await applicationModel.create({
         user_id: req.user.id,
         vacancy_id,
+        work_modality: normalizedWorkModality,
         status: 'PENDENTE',
         expiration_date: expirationDate.toISOString(),
         created_at: new Date().toISOString(),
