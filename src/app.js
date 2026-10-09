@@ -69,8 +69,29 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Platform detection middleware
 app.use(platformMiddleware);
 
-// Static files for uploads
+// Static files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+app.get('/vagas', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/vagas.html'));
+});
+
+app.get('/cadastro', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/cadastro.html'));
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/login.html'));
+});
+
+app.get('/empresas', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/empresas.html'));
+});
 
 // Health check
 app.get('/health', async (req, res) => {

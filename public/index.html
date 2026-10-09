@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zircon | Vagas freelancer online</title>
+    <style>
+      :root {
+        --bg: #081423;
+        --bg-2: #101d2e;
+        --panel: rgba(17, 24, 39, 0.86);
+        --card: rgba(15, 23, 42, 0.92);
+        --primary: #7c3aed;
+        --primary-2: #22c55e;
+        --secondary: #38bdf8;
+        --text: #edf3ff;
+        --muted: #a7b6d5;
+        --line: rgba(148, 163, 184, 0.18);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #07111d, #0d1c2d 35%, #121b2d);
+        color: var(--text);
+      }
+
+      a { text-decoration: none; }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 20px 60px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        font-weight: 700;
+      }
+
+      .brand .name {
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      .nav {
+        display: flex;
+        gap: 24px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav a {
+        color: var(--muted);
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, var(--primary), #5b21b6);
+        border: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+        background: rgba(17, 24, 39, 0.78);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 36px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.14);
+        border: 1px solid rgba(124, 58, 237, 0.35);
+        color: #ddd6fe;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(2.6rem, 5vw, 4.4rem);
+        line-height: 1.05;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.8;
+        max-width: 620px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+
+      .primary-btn, .ghost-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border-radius: 14px;
+        padding: 0 18px;
+        font-weight: 700;
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, var(--primary), #5b21b6);
+        color: white;
+      }
+
+      .ghost-btn {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+
+      .hero-metrics {
+        display: grid;
+        gap: 14px;
+      }
+
+      .metric-panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 18px 20px;
+      }
+
+      .metric-panel .label {
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .metric-panel strong {
+        display: block;
+        margin-top: 8px;
+        font-size: 1.7rem;
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .stat-card {
+        background: rgba(17, 24, 39, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px 20px;
+      }
+
+      .stat-card span {
+        color: var(--muted);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .stat-card strong {
+        font-size: 1.5rem;
+      }
+
+      .section {
+        margin-top: 42px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .section-header h3 {
+        margin: 0;
+        font-size: 1.7rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .feature-card {
+        background: rgba(17, 24, 39, 0.78);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 24px 22px;
+      }
+
+      .feature-card .icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(124, 58, 237, 0.16);
+        color: #ddd6fe;
+        font-size: 1.4rem;
+        margin-bottom: 14px;
+      }
+
+      .feature-card h4 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .jobs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .job-card {
+        background: rgba(17, 24, 39, 0.78);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(34, 197, 94, 0.12);
+        color: #bbf7d0;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .job-card h4 {
+        margin: 14px 0 10px;
+        font-size: 1.15rem;
+      }
+
+      .job-card p {
+        color: var(--muted);
+        margin: 0 0 16px;
+        line-height: 1.6;
+      }
+
+      .job-meta {
+        display: flex;
+        justify-content: space-between;
+        color: #dfeaff;
+        font-size: 0.92rem;
+      }
+
+      .footer {
+        margin-top: 32px;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .hero, .grid-3, .jobs, .stats-row {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 24px;
+        }
+        .nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">Z</div>
+          <div class="name">Zircon</div>
+        </div>
+
+        <nav class="nav">
+          <a href="/vagas">Vagas</a>
+          <a href="/#como-funciona">Como funciona</a>
+          <a href="/empresas">Empresas</a>
+          <a href="/cadastro">Cadastro</a>
+        </nav>
+
+        <a class="cta" href="/login">Entrar</a>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <span class="eyebrow">Freelancer online</span>
+            <h1>Vagas remotas para freelancers e especialistas.</h1>
+            <p class="lead">
+              Conectamos profissionais talentosos com empresas que precisam de ajuda em design,
+              desenvolvimento, marketing, redação, suporte e muito mais — tudo 100% remoto.
+            </p>
+
+            <div class="hero-actions">
+              <a class="primary-btn" href="/vagas">Ver vagas</a>
+              <a class="ghost-btn" href="/cadastro">Quero trabalhar</a>
+            </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-panel">
+              <div class="label">Freelancers ativos</div>
+              <strong>+12.4k</strong>
+            </div>
+            <div class="metric-panel">
+              <div class="label">Empresas parceiras</div>
+              <strong>320+</strong>
+            </div>
+            <div class="metric-panel">
+              <div class="label">Aprovação média</div>
+              <strong>98%</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-row">
+          <div class="stat-card">
+            <span>Projetos semanais</span>
+            <strong>480</strong>
+          </div>
+          <div class="stat-card">
+            <span>Tempo médio de match</span>
+            <strong>24h</strong>
+          </div>
+          <div class="stat-card">
+            <span>Trabalho remoto</span>
+            <strong>100%</strong>
+          </div>
+        </section>
+
+        <section class="section" id="como-funciona">
+          <div class="section-header">
+            <h3>Como funciona</h3>
+          </div>
+
+          <div class="grid-3">
+            <article class="feature-card">
+              <div class="icon">1</div>
+              <h4>Cadastre-se</h4>
+              <p>Crie seu perfil profissional, destaque suas habilidades e escolha suas áreas favoritas.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">2</div>
+              <h4>Receba vagas</h4>
+              <p>Encontre oportunidades remotas relevantes para seu perfil e disponibilidade.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">3</div>
+              <h4>Conclua projetos</h4>
+              <p>Trabalhe com empresas globais, entregue resultados e construa reputação.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="vagas">
+          <div class="section-header">
+            <h3>Vagas em destaque</h3>
+          </div>
+
+          <div class="jobs">
+            <article class="job-card">
+              <span class="tag">Design</span>
+              <h4>UI/UX Designer</h4>
+              <p>Criação de interfaces para produto SaaS com foco em experiência mobile e conversão.</p>
+              <div class="job-meta">
+                <span>Remoto</span>
+                <strong>R$ 4.800</strong>
+              </div>
+            </article>
+
+            <article class="job-card">
+              <span class="tag">Dev</span>
+              <h4>Desenvolvedor Front-end</h4>
+              <p>Implementação com React, foco em performance, acessibilidade e trabalho em equipe.</p>
+              <div class="job-meta">
+                <span>Remoto</span>
+                <strong>R$ 6.200</strong>
+              </div>
+            </article>
+
+            <article class="job-card">
+              <span class="tag">Marketing</span>
+              <h4>Especialista em Growth</h4>
+              <p>Estratégia de aquisição, testes de campanha e otimização de funil de conversão.</p>
+              <div class="job-meta">
+                <span>Remoto</span>
+                <strong>R$ 5.100</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Zircon © 2026</span>
+        <span>Vagas freelancer online • trabalho remoto • marketplace</span>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zircon | Vagas</title>
+    <style>
+      :root {
+        --bg: #07111d; --panel: rgba(17,24,39,0.9); --card: #0f172a; --primary:#7c3aed; --text:#edf3ff; --muted:#a7b6d5; --line:rgba(148,163,184,0.18); --green:#22c55e;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin:0; font-family:Arial,sans-serif; background:linear-gradient(135deg,#07111d,#0d1c2d 35%,#121b2d); color:var(--text);
+      }
+      .page { max-width:1200px; margin:0 auto; padding:28px 20px 50px; }
+      .topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:24px; }
+      .brand { display:flex; align-items:center; gap:12px; }
+      .brand-mark { width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--primary),#38bdf8); font-weight:700; }
+      .nav { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+      .nav a { color:var(--muted); text-decoration:none; }
+      .cta { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0 18px; background:linear-gradient(135deg,var(--primary),#5b21b6); color:white; border-radius:12px; font-weight:700; text-decoration:none; }
+      .hero { background:rgba(17,24,39,0.85); border:1px solid var(--line); border-radius:24px; padding:24px; }
+      .hero h1 { margin:0 0 10px; font-size: clamp(2rem,4vw,3.2rem); }
+      .hero p { color:var(--muted); margin:0; line-height:1.7; }
+      .filter-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
+      .pill { padding:10px 14px; border-radius:999px; border:1px solid var(--line); color:var(--text); background:transparent; }
+      .pill.active { background:rgba(124,58,237,0.2); border-color:rgba(124,58,237,0.45); }
+      .jobs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:28px; }
+      .job { background:rgba(17,24,39,0.8); border:1px solid var(--line); border-radius:18px; padding:20px; }
+      .tag { display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(34,197,94,0.12); color:#bbf7d0; font-size:0.72rem; font-weight:700; text-transform:uppercase; }
+      .job h3 { margin:14px 0 10px; font-size:1.2rem; }
+      .job p { color:var(--muted); line-height:1.7; margin:0 0 16px; }
+      .job-meta { display:flex; justify-content:space-between; align-items:center; color:#dfeaff; }
+      .job-meta strong { color:#fff; }
+      .apply { display:inline-flex; align-items:center; justify-content:center; margin-top:16px; width:100%; min-height:44px; border-radius:12px; background:linear-gradient(135deg,var(--primary),#5b21b6); color:white; text-decoration:none; font-weight:700; }
+      @media (max-width: 760px) { .jobs { grid-template-columns:1fr; } .topbar { flex-wrap:wrap; } }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">Z</div>
+          <strong>Zircon</strong>
+        </div>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/login">Login</a>
+          <a href="/cadastro">Cadastro</a>
+        </nav>
+        <a class="cta" href="/cadastro">Quero trabalhar</a>
+      </header>
+
+      <section class="hero">
+        <h1>Vagas para freelancers</h1>
+        <p>Encontre projetos remotos em design, desenvolvimento, marketing, redação, atendimento e muito mais.</p>
+        <div class="filter-row">
+          <span class="pill active">Todos</span>
+          <span class="pill">Design</span>
+          <span class="pill">Tech</span>
+          <span class="pill">Marketing</span>
+          <span class="pill">Suporte</span>
+        </div>
+      </section>
+
+      <div class="jobs">
+        <article class="job">
+          <span class="tag">Design</span>
+          <h3>UI/UX Designer</h3>
+          <p>Criação de fluxos para aplicação SaaS e design de experiência mobile.</p>
+          <div class="job-meta"><span>Remoto</span><strong>R$ 4.800</strong></div>
+          <a class="apply" href="/cadastro">Candidatar-se</a>
+        </article>
+
+        <article class="job">
+          <span class="tag">Tech</span>
+          <h3>Front-end React</h3>
+          <p>Desenvolver interface responsiva com foco em performance e acessibilidade.</p>
+          <div class="job-meta"><span>Remoto</span><strong>R$ 6.200</strong></div>
+          <a class="apply" href="/cadastro">Candidatar-se</a>
+        </article>
+
+        <article class="job">
+          <span class="tag">Marketing</span>
+          <h3>Growth Specialist</h3>
+          <p>Estratégia de aquisição digital, campanhas e otimização de conversão.</p>
+          <div class="job-meta"><span>Remoto</span><strong>R$ 5.100</strong></div>
+          <a class="apply" href="/cadastro">Candidatar-se</a>
+        </article>
+
+        <article class="job">
+          <span class="tag">Suporte</span>
+          <h3>Customer Success</h3>
+          <p>Atendimento a clientes e suporte para implementação e onboarding.</p>
+          <div class="job-meta"><span>Remoto</span><strong>R$ 3.700</strong></div>
+          <a class="apply" href="/cadastro">Candidatar-se</a>
+        </article>
+
+        <article class="job">
+          <span class="tag">Redação</span>
+          <h3>Copywriter</h3>
+          <p>Produção de textos para campanhas, landing pages e materiais externos.</p>
+          <div class="job-meta"><span>Remoto</span><strong>R$ 4.100</strong></div>
+          <a class="apply" href="/cadastro">Candidatar-se</a>
+        </article>
+
+        <article class="job">
+          <span class="tag">Admin</span>
+          <h3>Assistente Virtual</h3>
+          <p>Organização de agenda, atendimento e suporte administrativo para times remotos.</p>
+          <div class="job-meta"><span>Remoto</span><strong>R$ 3.200</strong></div>
+          <a class="apply" href="/cadastro">Candidatar-se</a>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
